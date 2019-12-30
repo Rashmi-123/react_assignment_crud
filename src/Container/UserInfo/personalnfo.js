@@ -7,7 +7,7 @@ import './personalInfo.css'
 
 const PersonalInfo = () =>{
     return(
-        <div>
+        <div className = "register">
             <Form>
             <div className="row">
                 <div className="col-md-4">
@@ -192,7 +192,7 @@ const PersonalInfo = () =>{
                 <FormGroup>
                     <Label for="birthsign">BIRTH SIGN</Label>
                     <div className="input-group-box input-group-sm mb-3">
-                        <i icon="envelope" color="#6DB65B" className="fas fa-envelope format-icon" />
+                        <i icon="birthday-cake" color="#6DB65B" className="fas fa-birthday-cake format-icon" />
                         <Input className="inputnew" type="text" name="birthsign" id="birthsign" placeholder="Enter Your Birth Sign"  />
                         <span></span>
                     </div>
@@ -206,7 +206,7 @@ const PersonalInfo = () =>{
                     <Label for="role">USER ROLE</Label>
                     <div className="input-group-box input-group-sm mb-3">
                         <i icon="user" color="#6DB65B" className="fas fa-user format-icon" />
-                        <Input className="inputnew" type="role" name="mail" id="Email" placeholder="Email"  />
+                        <Input className="inputnew" type="role" name="mail" id="Email" placeholder="User Role"  />
                         <span></span>
                     </div>
                 </FormGroup>
@@ -215,7 +215,7 @@ const PersonalInfo = () =>{
                 <FormGroup>
                     <Label for="userid">USER ID</Label>
                     <div className="input-group-box input-group-sm mb-3">
-                        <i icon="envelope" color="#6DB65B" className="fas fa-envelope format-icon" />
+                        <i icon="id-badge" color="#6DB65B" className="fas fa-id-badge format-icon" />
                         <Input className="inputnew" type="userid" name="userid" id="userid" placeholder="1"  />
                         <span></span>
                     </div>
@@ -225,7 +225,7 @@ const PersonalInfo = () =>{
                 <FormGroup>
                     <Label for="username">USER NAME</Label>
                     <div className="input-group-box input-group-sm mb-3">
-                        <i icon="envelope" color="#6DB65B" className="fas fa-envelope format-icon" />
+                        <i icon="user-circle" color="#6DB65B" className="fas fa-user-circle format-icon" />
                         <Input className="inputnew" type="text" name="username" id="username" placeholder="admin"  />
                         <span></span>
                     </div>
