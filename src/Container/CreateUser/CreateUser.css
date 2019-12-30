@@ -1,0 +1,36 @@
+form{
+    padding: 10px;
+}
+
+#CreateUsercard {
+    border-radius: 25px;
+   height:auto
+  }
+
+  span {
+      color: red;
+      font-size:xx-small;
+      font-family: arial;
+  }
+
+
+Label{
+    font-size: xx-small;
+    font-weight: bold;
+}
+
+.create_user_form{
+    padding: 40px;
+      background-color: #e4e4e4;
+      border-radius: 25px;
+      height: auto;
+}
+
+.create-user-button{
+    border-radius: 50px;
+    height: 49px;
+    width: 140px;
+    background-color:#0c6de6;
+}
+
+    

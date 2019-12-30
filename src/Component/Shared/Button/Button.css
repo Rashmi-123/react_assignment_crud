@@ -1,0 +1,17 @@
+.link{
+    padding-left: 30px;
+    color: gray;
+    ;
+}
+
+.Login-button{
+    border-radius: 50px;
+    height: 49px;
+    width: 140px;
+    background-color:#0c6de6;
+}
+
+.login-link-ul{
+    padding: 10px;
+    
+}

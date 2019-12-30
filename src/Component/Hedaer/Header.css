@@ -1,0 +1,26 @@
+.header{
+    background-color: #004891;
+    height: auto;
+}
+
+.childNav{
+    padding-left:20px;
+    padding-right:20px;
+    border-right:1PX solid gray;
+    color:white;
+    
+}
+
+.labelNav{
+    padding: 10px;
+    color: ivory;
+}
+
+.logoutButton{
+    padding: 10px;
+    width: 100px;
+}
+
+.childNav>li>a:hover {
+    background-color: green;
+  }

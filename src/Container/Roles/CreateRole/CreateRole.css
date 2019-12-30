@@ -1,0 +1,14 @@
+.addRoleButton{
+    border-radius: 50px;
+    height: 49px;
+    width: 140px;
+    background-color:#0c6de6;
+   
+}
+
+.RollForm{
+    margin-top:10px;
+    margin-left:10px;
+    background-color: #efefef;
+    text-align: center;
+}
