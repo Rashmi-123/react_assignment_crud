@@ -26,8 +26,6 @@ class HeaderComponent extends Component{
    
     render(){
 
-       // console.log("header render");
-
         let username = sessionStorage.getItem('userName');
         let userRoll = sessionStorage.getItem('userRoll');
 

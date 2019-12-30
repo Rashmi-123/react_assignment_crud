@@ -30,12 +30,22 @@ class CreateUser extends Component{
 
     handleElement = e =>{
         
+        console.log("name");
+
         let target = e.target;
         let name = target.name;
         let value = target.type === 'select' ? target.selected : target.value;;
 
         this.setState({
-            [name] : value
+            [name] : value,
+            exituserError : '',
+            error : {
+                nameError : '',
+                mailError : '',
+                roleError : '',
+                passwordError : '',
+                mobileError : ''
+            }
         });
 
    }
@@ -177,29 +187,29 @@ render(){
                                 <Label for="Username">USERNAME</Label>
                                 <div className="input-group-box input-group-sm mb-3">
                                     <i icon="envelope" color="#6DB65B" className="fa fa-user format-icon" />
-                                    <Input className="inputnew" type="text" name="name" id="Username" placeholder="Username" onChange={this.handleElement} value={this.state.name}/>
-                                    <span>{this.state.error.nameError}</span>
+                                    <Input  type="text" name="name" id="Username" placeholder="Username" onChange={this.handleElement} value={this.state.name}/>
                                 </div>
+                                <span>{this.state.error.nameError}</span>
                             </FormGroup>
 
                             <FormGroup>
                                 <Label for="Email">EMAIL ADDRESS</Label>
                                 <div className="input-group-box input-group-sm mb-3">
                                     <i icon="envelope" color="#6DB65B" className="fas fa-envelope format-icon" />
-                                    <Input className="inputnew" type="Email" name="mail" id="Email" placeholder="Email" onChange={this.handleElement} value={this.state.mail}/>
-                                    <span>{this.state.error.mailError}</span>
+                                    <Input  type="Email" name="mail" id="Email" placeholder="Email" onChange={this.handleElement} value={this.state.mail}/>
                                 </div>
+                                <span>{this.state.error.mailError}</span>
                             </FormGroup>
 
                             <FormGroup>
                                 <Label for="UserRole">USER ROLE</Label>
                                 <div className="input-group-box input-group-sm mb-3">
-                                    <Input className="inputnew" type="select" name="role" id="UserRole" onChange={this.handleElement} value={this.state.role}>
+                                    <Input  type="select" name="role" id="UserRole" onChange={this.handleElement} value={this.state.role}>
                                     <option>-Select Role-</option>
                                     {option}
                                     </Input>
-                                    <span>{this.state.error.roleError}</span>
                                 </div>
+                                <span>{this.state.error.roleError}</span>
                             </FormGroup>
 
                             <FormGroup>
@@ -223,18 +233,18 @@ render(){
                                 <Label for="Password">PASSWORD</Label>
                                 <div className="input-group-box input-group-sm mb-3">
                                     <i icon="envelope" color="#6DB65B" className="fa fa-key format-icon" />
-                                    <Input className="inputnew" type="password" name="password" id="Password" placeholder="Password" value={this.state.password} onChange={(event)=>this.handleElement(event,this.state.password)}/>
-                                    <span>{this.state.error.passwordError}</span>
+                                    <Input  type="password" name="password" id="Password" placeholder="Password" value={this.state.password} onChange={(event)=>this.handleElement(event,this.state.password)}/>
                                 </div>
+                                <span>{this.state.error.passwordError}</span>
                             </FormGroup> 
 
                             <FormGroup>
                                 <Label for="Mobile">MOB NO.</Label>
                                 <div className="input-group-box input-group-sm mb-3">
                                     <i icon="envelope" color="#6DB65B" className="fa fa-phone format-icon" />
-                                    <Input className="inputnew" type="input" name="mob" id="Mobile" placeholder="Mobile " value={this.state.mob} onChange={(event)=>this.handleElement(event,this.state.mob)}/>
-                                    <span>{this.state.error.mobileError}</span>
+                                    <Input  type="input" name="mob" id="Mobile" placeholder="Mobile " value={this.state.mob} onChange={(event)=>this.handleElement(event,this.state.mob)}/>
                                 </div>
+                                <span>{this.state.error.mobileError}</span>
                             </FormGroup>
 
                            

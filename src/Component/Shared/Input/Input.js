@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Input } from "reactstrap";
 import "./Input.css";
 
 const InputElment = props => {
 
-  useEffect(()=>{
-    setTimeout(() => {
-      //alert("Welcome");
-    }, 10);
-    return () => {
-      console.log("Cleanup work in use");
-    }
+  // useEffect(()=>{
+  //   setTimeout(() => {
+  //     //alert("Welcome");
+  //   }, 10);
+  //   return () => {
+  //     console.log("Cleanup work in use");
+  //   }
 
-  },[])
+  // },[])
 
   return (
     <div>

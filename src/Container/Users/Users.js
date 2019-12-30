@@ -68,10 +68,34 @@ class Users extends PureComponent {
   searchuser = (event) =>{
     let search = event.target.value 
     let authtype = this.state.authtype;
+    let LoginUser = this.state.LoginRole;
      
     getUsersByAuthType(authtype).then(response => {
         if(response.data !== null){
-          this.userdetail = response.data;
+
+          if(LoginUser === "administrator"){
+            this.setState({
+              employee:response.data
+            })
+          }else if(LoginUser === "operator"){
+            let newstate = response.data.filter(user=>{
+              let roll = user.userRoll ? user.userRoll.rollName : '';
+              return roll !== "administrator"
+            })
+            this.setState({
+              employee:newstate
+            })
+          }else if(LoginUser === "accessuser"){
+            let newstate = response.data.filter(user=>{
+              let roll = user.userRoll ? user.userRoll.rollName : '';
+              return roll === "accessuser"
+            })
+            this.setState({
+              employee:newstate
+            })
+        }
+
+          this.userdetail = this.state.employee;
             let searchuser =   this.userdetail.filter(emp => {
             return emp.userName.toLowerCase().includes(search.toLowerCase());
             });
@@ -97,37 +121,62 @@ class Users extends PureComponent {
   showUser = (event) =>{
     let select = event.target.value 
     let authtype = this.state.authtype;
+    let LoginUser = this.state.LoginRole;
     
     getUsersByAuthType(authtype).then(response => {
       if(response.data !== null){
-        this.userdetail = response.data;
-         let selectuser; 
-          if(select !== authtype){
-                selectuser = this.userdetail.filter(user => {
-                  return user.authorize === select;
-              });
-            }else{selectuser = response.data;}
 
-          if(selectuser.length !== 0){
-              this.setState({
-                employee : selectuser,
-                error:{ noDataFoundError:"" }
-            })
-          }else{
-            this.setState({
-              employee : selectuser,
-              error:{ noDataFoundError:"No record found" }
+
+        if(LoginUser === "administrator"){
+          this.setState({
+            employee:response.data
           })
-          }
-         
+        }else if(LoginUser === "operator"){
+          let newstate = response.data.filter(user=>{
+            let roll = user.userRoll ? user.userRoll.rollName : '';
+            return roll !== "administrator"
+          })
+          this.setState({
+            employee:newstate
+          })
+        }else if(LoginUser === "accessuser"){
+          let newstate = response.data.filter(user=>{
+            let roll = user.userRoll ? user.userRoll.rollName : '';
+            return roll === "accessuser"
+          })
+          this.setState({
+            employee:newstate
+          })
+      }
+
+        this.userdetail = this.state.employee;
+          let selectuser; 
+
+           if(select !== authtype){
+                 selectuser = this.userdetail.filter(user => {
+                   return user.authorize === select;
+               });
+             }else{selectuser = this.userdetail;}
+ 
+           if(selectuser.length !== 0){
+               this.setState({
+                 employee : selectuser,
+                 error:{ noDataFoundError:"" }
+             })
+           }else{
+             this.setState({
+               employee : selectuser,
+               error:{ noDataFoundError:"No record found" }
+           })
+           }
+
       }
     });
    
   }
 
-  render() {
 
-    
+  render() {
 
     let { employee } = this.state;
     
