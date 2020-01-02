@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
-import { Table, Card, Button, Modal } from "react-bootstrap";
-import { CardBody, UncontrolledCollapse } from "reactstrap";
+import { Table, Button } from "react-bootstrap";
+// import { CardBody, UncontrolledCollapse } from "reactstrap";
 import "./Users.css";
 import { withRouter } from "react-router";
 import SelectComponent from "../../Component/Select/SelectComponenet";
@@ -22,7 +22,10 @@ class Users extends PureComponent {
       error: {
         noDataFoundError: ""
       },
-      show: false
+      showuser: {
+        show: false,
+        mail:''
+      }
     };
   }
 
@@ -84,12 +87,12 @@ class Users extends PureComponent {
 
 //============== for modal ====================//
 
-handleClose = () =>{
-  this.setState({show: !this.state.show})
-}
+viewUser = (mailid) =>{
 
-handleShow = () =>{
-  this.setState({show: !this.state.show})
+  this.setState({showuser: {
+                    show: !this.state.showuser.show,
+                    mail: mailid
+                  }})
 }
 
   render() {
@@ -143,18 +146,9 @@ handleShow = () =>{
                 className="viewButton"
                 color="primary"
                 id={`view_button_${index}`}
-                onClick = {this.handleShow}
-              >
-                {" "}
-                View{" "}
+                onClick = {() => this.viewUser(user.emailId)}
+              >View
               </Button>
-            </td>
-          </tr>
-          <tr>
-            <td colSpan="10">
-              <div className="row">
-                <ModalComponent handleClose={this.handleClose}/>
-              </div>
             </td>
           </tr>
         </>
@@ -220,6 +214,7 @@ handleShow = () =>{
             </tbody>
           </Table>
         ) : null}
+        {this.state.showuser.show ? <ModalComponent viewUser={this.viewUser} state={this.state} /> : null}
       </div>
     );
   }

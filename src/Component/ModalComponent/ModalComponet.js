@@ -1,16 +1,37 @@
-import React from 'react';
+import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 
-const ModalComponent = (props) =>{
+const ModalComponent = props => {
+  const [show, setShow] = useState(true);
 
-    const [show, setShow] = useState(false);
+  let user = props.state.employee.filter(user => {
+    return user.emailId === props.state.showuser.mail;
+  });
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  const handleClose = () => {
+    let showuser = setShow(!show);
+    props.viewUser(showuser);
+  };
 
-    return(
-        <div className="col-md-4 offset-md-4">
-                  {/* <UncontrolledCollapse  key={index} toggler={`#view_button_${index}`}>
+  let modal = user.map((user, index) => (
+    <Modal
+      key={index} show={show} onHide={handleClose} size="md" aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title><h5 className="card-title">{user.userName}</h5></Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p>EmailId : {user.emailId}</p>
+        <p>Mobile No. : {user.mobileNo}</p>
+        <p>userRoll : {user.userRoll ? user.userRoll.rollName : ""}</p>
+      </Modal.Body>
+    </Modal>
+  ));
+
+  return (
+    <div className="col-md-4 offset-md-4">
+      {/* <UncontrolledCollapse  key={index} toggler={`#view_button_${index}`}>
                             <Card className="infoTab">
                             <CardBody>
                               
@@ -21,19 +42,9 @@ const ModalComponent = (props) =>{
                             </CardBody>
                             </Card>
                         </UncontrolledCollapse> */}
-                        <Modal show={this.state.show} onHide={this.handleClose} animation={false} size="md"
-                            aria-labelledby="contained-modal-title-vcenter"
-                            centered>
-                          <Modal.Header closeButton>
-                            <Modal.Title>Modal heading</Modal.Title>
-                          </Modal.Header>
-                          <Modal.Body>
-                            Woohoo, you're reading this text in a modal!
-                          </Modal.Body>
-                        </Modal>
-                </div>
-    );
-
-}
+                        {modal}
+    </div>
+  );
+};
 
 export default ModalComponent;
