@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { Table, Button } from "react-bootstrap";
+import { Table} from "react-bootstrap";
 // import { CardBody, UncontrolledCollapse } from "reactstrap";
 import "./Users.css";
 import { withRouter } from "react-router";
@@ -9,7 +9,8 @@ import {
   getUsersByAuthType,
   changeAuthorizeStatus
 } from "../../Api-Utills/ApiUtil";
-import ModalComponent from '../../Component/ModalComponent/ModalComponet';
+import ModalComponent from "../../Component/ModalComponent/ModalComponet";
+import TableRow from "../../Component/Table/UserTable";
 
 class Users extends PureComponent {
   constructor(props) {
@@ -24,7 +25,7 @@ class Users extends PureComponent {
       },
       showuser: {
         show: false,
-        mail:''
+        mail: ""
       }
     };
   }
@@ -59,6 +60,7 @@ class Users extends PureComponent {
 
   //================== user reject code ======================//
   rejectUser = userID => {
+  
     let reqdata = {
       authorize: "N",
       userId: userID
@@ -85,75 +87,18 @@ class Users extends PureComponent {
     this.setState({ employee: reqdata.employee, error: reqdata.error });
   };
 
-//============== for modal ====================//
+  //============== for modal ====================//
 
-viewUser = (mailid) =>{
-
-  this.setState({showuser: {
-                    show: !this.state.showuser.show,
-                    mail: mailid
-                  }})
-}
+  viewUser = mailid => {
+    this.setState({
+      showuser: {
+        show: !this.state.showuser.show,
+        mail: mailid
+      }
+    });
+  };
 
   render() {
-    let { employee } = this.state;
-
-    if (employee.length !== undefined) {
-      var listItems = employee.map((user, index) => (
-        <>
-          <tr key={index}>
-            <td>{index + 1}</td>
-            <td>{user.userId}</td>
-            <td>{user.userName}</td>
-            <td>{user.emailId}</td>
-            <td>{user.mobileNo}</td>
-            <td>{user.authorize}</td>
-            {user.userRoll ? <td>{user.userRoll.rollName}</td> : <td></td>}
-
-            {this.state.LoginRole === "administrator" ? (
-              <td>
-                {user.authorize === "Y" ? (
-                  <Button
-                    className="rejectButton"
-                    onClick={() => this.rejectUser(user.userId)}
-                  >
-                    Reject
-                  </Button>
-                ) : (
-                  <Button
-                    className="approveButton"
-                    onClick={() => this.approveUser(user.userId)}
-                  >
-                    Approve
-                  </Button>
-                )}
-              </td>
-            ) : null}
-
-            {this.state.LoginRole === "administrator" ? (
-              <td>
-                <Button
-                  className="editButton"
-                  onClick={() => this.editUser(user.userName)}
-                >
-                  Edit
-                </Button>
-              </td>
-            ) : null}
-
-            <td>
-              <Button
-                className="viewButton"
-                color="primary"
-                id={`view_button_${index}`}
-                onClick = {() => this.viewUser(user.emailId)}
-              >View
-              </Button>
-            </td>
-          </tr>
-        </>
-      ));
-    }
 
     let childprops = {
       authtype: this.state.authtype,
@@ -177,7 +122,6 @@ viewUser = (mailid) =>{
           <div className="col-md-3">{selectuser}</div>
           <div className="col-md-3">{searchuser}</div>
         </div>
-
         {header ? (
           <Table
             striped
@@ -210,11 +154,14 @@ viewUser = (mailid) =>{
                 </tr>
               ) : null}
 
-              {listItems}
+              <TableRow employee={this.state.employee} role={this.state.LoginRole} handleRejectUser={this.rejectUser} handleApproveUser={this.approveUser} 
+              handleEditUser={this.editUser} handleViewUser={this.viewUser}/>
             </tbody>
           </Table>
         ) : null}
-        {this.state.showuser.show ? <ModalComponent viewUser={this.viewUser} state={this.state} /> : null}
+        {this.state.showuser.show ? (
+          <ModalComponent viewUser={this.viewUser} state={this.state} />
+        ) : null}
       </div>
     );
   }

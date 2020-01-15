@@ -1,77 +1,84 @@
-import React, { Component } from 'react';
-import {
-    Input, Form, FormGroup, Label, Card, Button
-  } from 'reactstrap';
-  import { withRouter } from 'react-router-dom';
-  import './CreateRole.css';
-  
-class CreateRoleComponent extends Component{
+import React, { Component } from "react";
+import { Input, Form, FormGroup, Label, Card, Button } from "reactstrap";
+import { withRouter } from "react-router-dom";
+import "./CreateRole.css";
 
-    constructor(props){
-        super(props);
-        this.state = {
-            role : '',
-            roleId : props.roleId,
-            error : ''
-        }
-    }
-    
-    handleElement = e =>{
-        let target = e.target;
-        let value = target.value;;
-        this.setState({ role : value });
-   }
+class CreateRoleComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      role: "",
+      roleId: props.roleId,
+      error: ""
+    };
+  }
 
-    validateForm = () =>{
-        let error  = false;
-        let tempError = this.state.error;
+  handleElement = e => {
+    let target = e.target;
+    let value = target.value;
+    this.setState({ role: value });
+  };
 
-        if(this.state.role.length === 0){
-            tempError = "Role should not be empty"; 
-            error = true;
-        }else{ tempError = ''; }
+  validateForm = () => {
+    let error = false;
+    let tempError = this.state.error;
 
-        if(error){
-            this.setState({ error : tempError });
-            return true;
-        }
+    if (this.state.role.length === 0) {
+      tempError = "Role should not be empty";
+      error = true;
+    } else {
+      tempError = "";
     }
 
-    handleSubmit = (e) =>{
-        e.preventDefault();
-        let noError = this.validateForm();
-
-        if(!noError){
-            let reqdata = {
-                rollId: this.state.roleId+1,
-                rollName: this.state.role 
-            }
-          this.props.handleSubmit(reqdata)
-        }
+    if (error) {
+      this.setState({ error: tempError });
+      return true;
     }
+  };
 
-    render(){
-        return(
-            <div>
-                 <Card className="RollForm">    
-                     <Form onSubmit={this.handleSubmit} className="roleformGroup">
-                            <FormGroup className="">
-                            <Label for="rollname">ROLL NAME</Label>
-                                <div className="input-group-box input-group-sm mb-3">
-                                    <Input className="rollname" type="text" name="name" id="rollname" onChange={this.handleElement} defaultValue={this.state.role}/>
-                                    <span>{this.state.error}</span>
-                                </div>
-                            </FormGroup>
+  rolehandleSubmit = e => {
+    e.preventDefault();
+    let noError = this.validateForm();
 
-                            <FormGroup>
-                                <Button className="addRoleButton">Add</Button>
-                            </FormGroup>
+    if (!noError) {
+      let reqdata = {
+        rollId: this.state.roleId + 1,
+        rollName: this.state.role
+      };
 
-                     </Form>
-                </Card>                    
-            </div>
-        )
+      this.setState({ role: "" });
+      this.props.handleSubmit(reqdata);
     }
+  };
+
+  render() {
+    return (
+      <div>
+        <Card className="RollForm">
+          <Form onSubmit={this.rolehandleSubmit} className="roleformGroup">
+            <FormGroup className="">
+              <Label for="rollname">ROLL NAME</Label>
+              <div className="input-group-box input-group-sm mb-3">
+                <Input
+                  className="rollname"
+                  type="text"
+                  name="name"
+                  id="rollname"
+                  onChange={this.handleElement}
+                  value={this.state.role}
+                />
+                <span>{this.state.error}</span>
+              </div>
+            </FormGroup>
+
+            <FormGroup>
+              <Button className="addRoleButton">Add</Button>
+            </FormGroup>
+          </Form>
+        </Card>
+      </div>
+    );
+  }
 }
 
 export default withRouter(CreateRoleComponent);

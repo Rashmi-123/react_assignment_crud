@@ -1,11 +1,20 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
     Input, Form, FormGroup, Label, Button
   } from 'reactstrap';
-import { withRouter } from 'react-router-dom'
-import './personalInfo.css'
+import { withRouter } from 'react-router-dom';
+import './personalInfo.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const PersonalInfo = () =>{
+
+    const [startDate,setStartDate] = useState(new Date());
+
+        const  handleChange = (date) => {
+            setStartDate(startDate => date)
+      };
+
     return(
         <div className = "register">
             <Form>
@@ -45,19 +54,25 @@ const PersonalInfo = () =>{
             <div className="row">
                 <div className="col-md-4">
                 <FormGroup>
-                    <Label for="Email">GENGER</Label>
-                    <div className="input-group-box input-group-sm mb-3"><i />
-                        <Input className="inputnew" type="Email" name="mail" id="Email" placeholder="Gender"  />
+                    <Label for="Gender">GENGER</Label>
+                    <div className="input-group-box input-group-sm mb-3">
+                        <Input className="inputnew" type="select" name="gender" id="gender" placeholder="Gender" >
+                        <option defaultValue='selected'>-Select Gender-</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        </Input>
                         <span></span>
                     </div>
                 </FormGroup>
+            
+
                 </div>
                 <div className="col-md-4">
                 <FormGroup>
                     <Label for="Email">DATE OF BIRTH</Label>
                     <div className="input-group-box input-group-sm mb-3">
-                        <i icon="calendar" color="#6DB65B" className="fas fa-calendar format-icon" />
-                        <Input className="inputnew" type="Email" name="mail" id="Email" placeholder="Dtae of Birth"  />
+                        <DatePicker className="datepick"  selected={startDate}
+                        onChange={handleChange}/>
                         <span></span>
                     </div>
                 </FormGroup>

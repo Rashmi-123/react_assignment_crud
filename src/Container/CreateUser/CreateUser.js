@@ -29,9 +29,7 @@ class CreateUser extends Component{
     };
 
     handleElement = e =>{
-        
-        console.log("name");
-
+       
         let target = e.target;
         let name = target.name;
         let value = target.type === 'select' ? target.selected : target.value;;
