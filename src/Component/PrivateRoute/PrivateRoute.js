@@ -3,20 +3,8 @@ import {
     Route,
     Redirect
 } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-// const fakeAuth = {
-//     isAuthenticated: false,
-//     authenticate(cb) {
-//       if (sessionStorage.getItem("token")) {
-//         this.isAuthenticated = true;
-//         setTimeout(cb, 100); // fake async
-//       }
-//     },
-//     signout(cb) {
-//       this.isAuthenticated = false;
-//       setTimeout(cb, 100); // fake async
-//     }
-//   };
   
   const PrivateRoute = ({ component: Component, props: cProps, ...rest }) => {  
     return (
@@ -32,5 +20,11 @@ import {
       />
     );
   };
+
+  PrivateRoute.propTypes = {
+    Component : PropTypes.object,
+    cProps : PropTypes.object
+  }
+
 
   export default PrivateRoute;

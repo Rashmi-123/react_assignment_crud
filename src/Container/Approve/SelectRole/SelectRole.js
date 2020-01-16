@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input,Label } from 'reactstrap';
+import PropTypes from 'prop-types';
 import { getUsersByAuthType } from "../../../Api-Utills/ApiUtil";
 
 const SelectRoleComponent = (childprops) =>{
@@ -40,6 +41,10 @@ const selectuser = (e) =>{
                 </div>
         </div>
     );
+}
+
+SelectRoleComponent.propTypes = {
+   childprops : PropTypes.object
 }
 
 export default SelectRoleComponent;

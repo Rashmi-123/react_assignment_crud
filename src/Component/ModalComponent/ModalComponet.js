@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
+import PropTypes from 'prop-types';
 
 const ModalComponent = props => {
   const [show, setShow] = useState(true);
@@ -46,5 +47,10 @@ const ModalComponent = props => {
     </div>
   );
 };
+
+ModalComponent.propTypes = {
+  viewUser : PropTypes.func,
+   state : PropTypes.object
+}
 
 export default ModalComponent;

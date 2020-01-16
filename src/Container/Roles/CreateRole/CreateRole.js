@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Input, Form, FormGroup, Label, Card, Button } from "reactstrap";
 import { withRouter } from "react-router-dom";
 import "./CreateRole.css";
+import PropTypes from 'prop-types';
 
 class CreateRoleComponent extends Component {
   constructor(props) {
@@ -80,5 +81,10 @@ class CreateRoleComponent extends Component {
     );
   }
 }
+
+CreateRoleComponent.propTypes = {
+  handleSubmit : PropTypes.func,
+  roleId : PropTypes.number
+};
 
 export default withRouter(CreateRoleComponent);

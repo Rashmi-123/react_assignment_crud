@@ -5,6 +5,7 @@ import {
   } from 'reactstrap';
 import './EditUser.css';  
 import { getAllUserRoll } from '../../Api-Utills/ApiUtil';
+import PropTypes from 'prop-types';
 
 class EditUser extends Component{
 
@@ -107,6 +108,10 @@ class EditUser extends Component{
         );        
     }
 
+}
+
+EditUser.propTypes = {
+    location : PropTypes.object
 }
 
 export default withRouter(EditUser);

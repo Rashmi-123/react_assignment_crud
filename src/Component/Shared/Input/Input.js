@@ -1,6 +1,7 @@
 import React from "react";
 import { Input } from "reactstrap";
 import "./Input.css";
+import PropTypes from 'prop-types'; 
 
 const InputElment = props => {
 
@@ -26,5 +27,13 @@ const InputElment = props => {
     </div>
   );
 };
+
+InputElment.propTypes = {
+  type : PropTypes.string,
+  value : PropTypes.string,
+  id : PropTypes.string,
+  placeholder : PropTypes.string,
+  onChange : PropTypes.func,
+}
 
 export default InputElment;

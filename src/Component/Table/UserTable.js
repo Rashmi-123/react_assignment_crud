@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import PropTypes from 'prop-types'; 
 
 const TableRow = props => {
   if (props.employee && props.employee.length > 0) {
@@ -62,5 +63,13 @@ const TableRow = props => {
 
   return <>{listItems}</>;
 };
+
+TableRow.propTypes = {
+  employee : PropTypes.array,
+  handleApproveUser: PropTypes.func,
+  handleEditUser: PropTypes.func,
+  handleRejectUser: PropTypes.func,
+  handleViewUser: PropTypes.func
+}
 
 export default TableRow;

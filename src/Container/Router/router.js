@@ -8,9 +8,9 @@ import RolesComponent from "../Roles/Roles";
 import personalnfo from "../UserInfo/personalnfo";
 import PrivateRoute from "../../Component/PrivateRoute/PrivateRoute";
 import ApproveComponent from '../../Container/Approve/Approve';
+import PropTypes from 'prop-types';
 
 const RouteComponent = (props) => {
-
 
     return (
       <Switch>
@@ -55,6 +55,10 @@ const RouteComponent = (props) => {
       </Switch>
     );
  
+}
+
+RouteComponent.propTypes = {
+  childProps : PropTypes.object
 }
 
 export default RouteComponent;

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Input, Label } from "reactstrap";
 import { getUsersByAuthType } from "../../Api-Utills/ApiUtil";
+import PropTypes from 'prop-types'; 
 
 class SearchComponent extends Component {
   constructor(props) {
@@ -88,6 +89,10 @@ class SearchComponent extends Component {
       </div>
     );
   }
+}
+
+SearchComponent.propTyes = {
+  childprops : PropTypes.object
 }
 
 export default SearchComponent;

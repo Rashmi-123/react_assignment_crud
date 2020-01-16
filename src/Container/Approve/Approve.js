@@ -56,7 +56,6 @@ class ApproveComponent extends Component{
   //============== select user according to role =====================//
 
   selectuser = (user) =>{
-      console.log(user);
     this.setState({
         user:user
     })
@@ -81,9 +80,7 @@ class ApproveComponent extends Component{
 
         let childprops = {
             authtype: this.state.authtype,
-            LoginUser: this.state.LoginRole,
-            selectuser: this.selectuser,
-            employee: this.state.user
+            selectuser: this.selectuser
           };
 
         var selectuser = sessionStorage.getItem("token") ? (

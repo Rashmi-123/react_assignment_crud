@@ -11,6 +11,7 @@ import {
 } from "../../Api-Utills/ApiUtil";
 import ModalComponent from "../../Component/ModalComponent/ModalComponet";
 import TableRow from "../../Component/Table/UserTable";
+import PropTypes from 'prop-types';
 
 class Users extends PureComponent {
   constructor(props) {
@@ -166,6 +167,10 @@ class Users extends PureComponent {
       </div>
     );
   }
+}
+
+Users.propTypes = {
+  data : PropTypes.object
 }
 
 export default withRouter(Users);

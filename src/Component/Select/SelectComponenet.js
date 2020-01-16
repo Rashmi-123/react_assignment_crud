@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Input,Label } from 'reactstrap';
 import { getUsersByAuthType } from "../../Api-Utills/ApiUtil";
+import PropTypes from 'prop-types'; 
 
 class SelectComponent extends Component{
 
@@ -94,6 +95,10 @@ class SelectComponent extends Component{
         </div>    
     );
     }
+}
+
+SelectComponent.propTyes = {
+  childprops : PropTypes.object
 }
 
 export default SelectComponent;

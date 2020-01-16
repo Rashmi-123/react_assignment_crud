@@ -2,6 +2,7 @@ import React from "react";
 import { Button, FormGroup } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./Button.css";
+import PropTypes from 'prop-types'; 
 
 const ButtonElment = props => {
   return (
@@ -19,5 +20,12 @@ const ButtonElment = props => {
     </div>
   );
 };
+
+ButtonElment.propTypes = {
+  id : PropTypes.string,
+  value : PropTypes.string,
+  to : PropTypes.string,
+  link : PropTypes.string
+}
 
 export default ButtonElment;
