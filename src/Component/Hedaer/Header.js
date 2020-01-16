@@ -49,7 +49,7 @@ class HeaderComponent extends Component{
                                         state: { role: this.state.role }
                                     }}>Roles</Link>
 
-                                <NavLink className="childNav" to="/FDGFD"
+                                <NavLink className="childNav" to="/ApproveUser"
                                 activeStyle={{color : "white",  }}> Approve </NavLink>
 
                                 <NavLink className="childNav" to="/personalInfo"

@@ -56,7 +56,7 @@ class RolesComponent extends Component {
 
     return (
       <div>
-        {roles.length > 0 && 
+       
             <div className="row">
             <div className="col-md-3 offset-md-1">
               <CreateRoleComponent
@@ -95,7 +95,7 @@ class RolesComponent extends Component {
               </Table>
             </div>
           </div>
-        }
+        
         
       </div>
     );

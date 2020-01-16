@@ -41,6 +41,7 @@ class Users extends PureComponent {
     });
   };
 
+  //============= change user status ID =============================//
   changeStatus = reqdata => {
     changeAuthorizeStatus(reqdata).then(response => {
       if (response.status === 200) {

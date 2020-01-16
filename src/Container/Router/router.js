@@ -7,6 +7,7 @@ import EditUser from "../EditUser/EditUser";
 import RolesComponent from "../Roles/Roles";
 import personalnfo from "../UserInfo/personalnfo";
 import PrivateRoute from "../../Component/PrivateRoute/PrivateRoute";
+import ApproveComponent from '../../Container/Approve/Approve';
 
 const RouteComponent = (props) => {
 
@@ -41,6 +42,12 @@ const RouteComponent = (props) => {
         <PrivateRoute
           path={"/Roles"}
           component={RolesComponent}
+          exact
+          props={props.childProps}
+        />
+        <PrivateRoute
+          path={"/ApproveUser"}
+          component={ApproveComponent}
           exact
           props={props.childProps}
         />
