@@ -9,25 +9,6 @@
   background-color: gray;
 }
 
-.rejectButton{
-    width:100px;
-    background-color: #d02323;
-    border: 1px solid #d02323;
-}
-
-.approveButton{
-    width:100px;
-    background-color: green;
-    border: 1px solid green;
-}
-
-.editButton{
-    width:100px;
-}
-
-.viewButton{
-    width: 100px;
-}
 
 .usertable {
     border-collapse: collapse;

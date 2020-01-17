@@ -1,0 +1,33 @@
+.rejectButton{
+    width:100px;
+    background-color: #d02323;
+    border: 1px solid #d02323;
+}
+
+.approveButton{
+    width:100px;
+    background-color: green;
+    border: 1px solid green;
+}
+
+.editButton{
+    width:100px;
+}
+
+.viewButton{
+    width: 100px;
+}
+
+.rejectButton:hover
+{
+    background-color:#e4a3a3;
+    border: 1px solid #d02323;
+    box-shadow: 0 0 0 0.1rem rgba(208,35,35,1);
+}
+
+.approveButton:hover
+{
+    background-color:#8dd68d !important;
+    border: 1px solid green;
+    box-shadow: 0 0 0 0.1rem rgba(0,128,0,1);
+}

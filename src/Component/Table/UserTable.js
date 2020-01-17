@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import PropTypes from 'prop-types'; 
+import "./UserTable.css";
 
 const TableRow = props => {
   if (props.employee && props.employee.length > 0) {
